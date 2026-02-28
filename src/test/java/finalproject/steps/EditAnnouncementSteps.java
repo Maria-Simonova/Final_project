@@ -29,12 +29,12 @@ public class EditAnnouncementSteps {
     @Given("Пользователь авторизовался и зашел на портал")
     public void userRegisterAndAuthEnterProfile() {
         user = UserGenerator.generateUser();
-        ValidatableResponse registerResponse = apiClient.registerUser(user);
+        apiClient.registerUser(user);
 
         savedEmail = user.getEmail();
         savedPassword = user.getPassword();
 
-        mainPage.openMainPage();
+        MainPage.openMainPage();
         mainPage.clickLoginAndRegisterButton();
         User registerUser = new User();
         registerUser.setEmail(savedEmail);
@@ -47,7 +47,7 @@ public class EditAnnouncementSteps {
 
         Hooks.setUserCredentials(accessToken, userId, apiClient);
 
-        mainPage.openMainPage();
+        MainPage.openMainPage();
         mainPage.clickCreateAnnouncementButton();
     }
 
@@ -58,7 +58,7 @@ public class EditAnnouncementSteps {
 
         createdAdTitle = originalAd.getName();
 
-        personalPage.openPersonalPage();
+        PersonalPage.openPersonalPage();
     }
 
     @When("Пользователь открывает объявление для редактирования")
@@ -75,7 +75,7 @@ public class EditAnnouncementSteps {
 
     @Then("Внесенные изменения сохраняются")
     public void userEditsSaved() {
-        personalPage.openPersonalPage();
+        PersonalPage.openPersonalPage();
         personalPage.checkAnnouncementInProfile(editedAd.getName());
     }
 }

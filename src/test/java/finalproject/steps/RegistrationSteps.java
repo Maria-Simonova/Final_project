@@ -37,7 +37,7 @@ public class RegistrationSteps {
 
     @When("Пользователь открывает главную страницу")
     public void openMainPage() {
-        mainPage.openMainPage();
+        MainPage.openMainPage();
     }
 
     @When("Пользователь переходит на форму регистрации")

@@ -25,7 +25,7 @@ public class LoginSteps {
     @Given("Пользователь зарегистрирован")
     public void userIsRegistered() {
         user = UserGenerator.generateUser();
-        ValidatableResponse registerResponse = apiClient.registerUser(user);
+        apiClient.registerUser(user);
 
         savedEmail = user.getEmail();
         savedPassword = user.getPassword();
@@ -33,7 +33,7 @@ public class LoginSteps {
 
     @When("Пользователь открывает страницу входа")
     public void openLoginPage() {
-        mainPage.openMainPage();
+        MainPage.openMainPage();
         mainPage.clickLoginAndRegisterButton();
     }
 

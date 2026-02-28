@@ -16,7 +16,6 @@ public class DeleteAnnouncementSteps {
     private final LoginPage loginPage = new LoginPage();
     private final PersonalPage personalPage = new PersonalPage();
     private final CreateAnnouncementPage createAdPage = new CreateAnnouncementPage();
-    private final EditAnnouncementPage editAdPage = new EditAnnouncementPage();
     private final ApiClient apiClient = new ApiClient();
     private User user;
     private Announcement ad;
@@ -55,7 +54,7 @@ public class DeleteAnnouncementSteps {
         ad = AnnouncementGenerator.generateAd();
         createAdPage.createAnnouncement(ad);
 
-        personalPage.openPersonalPage();
+        PersonalPage.openPersonalPage();
     }
 
     @When("Пользователь нажимает на кнопку удаления объявления")
@@ -69,7 +68,7 @@ public class DeleteAnnouncementSteps {
 
     @Then("Объявление удалено")
     public void announcementShouldBeDeleted() {
-        personalPage.openPersonalPage();
+        PersonalPage.openPersonalPage();
 
         Assertions.assertFalse(
                 personalPage.firstAdCard().isDisplayed(),
