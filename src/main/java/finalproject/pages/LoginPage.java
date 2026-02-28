@@ -14,10 +14,6 @@ public class LoginPage {
     private SelenideElement loginButton() { return $x("//button[text()='Войти']"); }
     static SelenideElement registerButton() { return $x("//button[text()='Нет аккаунта']"); }
 
-    public LoginPage openLoginPage() {
-        open(LOGIN_PAGE_URL);
-        return this;
-    }
 
     @Step("Авторизация пользователя")
     public MainPage loginUser(User user) {
@@ -27,9 +23,4 @@ public class LoginPage {
         return page(MainPage.class);
     }
 
-    @Step("Переход к форме регистрации")
-    public RegistrationPage clickRegisterButton() {
-        registerButton().click();
-        return page(RegistrationPage.class);
-    }
 }

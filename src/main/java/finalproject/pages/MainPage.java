@@ -21,27 +21,10 @@ public class MainPage {
         return new MainPage();
     }
 
-    @Step("Получение имени пользователя")
-    public String getUserName() {
-        return userNameLabel().getText();
-    }
-
     @Step("Переход к форме авторизации")
     public LoginPage clickLoginAndRegisterButton() {
         loginAndRegisterButton().shouldBe(visible).click();
         return page(LoginPage.class);
-    }
-
-    @Step("Выход из системы")
-    public MainPage clickLogoutButton() {
-        SelenideElement logout = logoutButton();
-        SelenideElement login = loginAndRegisterButton();
-
-        logout.shouldBe(visible, Duration.ofSeconds(10)).shouldBe(enabled);
-        logout.click();
-        login.shouldBe(visible, Duration.ofSeconds(10));
-
-        return page(MainPage.class);
     }
 
     @Step("Проверка успешной авторизации")
@@ -50,11 +33,6 @@ public class MainPage {
         userNameLabel().shouldBe(visible);
         logoutButton().shouldBe(visible);
         return this;
-    }
-
-    public PersonalPage clickProfileButton() {
-        profileButton().click();
-        return page(PersonalPage.class);
     }
 
     @Step("Открытие страницы создания объявления")

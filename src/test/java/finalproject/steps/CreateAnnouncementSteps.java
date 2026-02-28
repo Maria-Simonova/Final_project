@@ -30,14 +30,14 @@ public class CreateAnnouncementSteps {
     @Given("Зарегистрированный")
     public void userIsRegistered() {
         user = UserGenerator.generateUser();
-        ValidatableResponse registerResponse = apiClient.registerUser(user);
+        apiClient.registerUser(user);
         savedEmail = user.getEmail();
         savedPassword = user.getPassword();
     }
 
     @And("Авторизованный пользователь")
     public void userIsLoggedIn() {
-        mainPage.openMainPage();
+        MainPage.openMainPage();
         mainPage.clickLoginAndRegisterButton();
         User registerUser = new User();
         registerUser.setEmail(savedEmail);
@@ -53,7 +53,7 @@ public class CreateAnnouncementSteps {
 
     @And("Открывает главную страницу")
     public void openStartPage() {
-        mainPage.openMainPage();
+        MainPage.openMainPage();
         mainPage.clickCreateAnnouncementButton();
     }
 
@@ -65,7 +65,7 @@ public class CreateAnnouncementSteps {
 
     @Then("Объявление отображается в профиле пользователя")
     public void checkAnnouncementInProfile() {
-        personalPage.openPersonalPage();
+        PersonalPage.openPersonalPage();
         personalPage.checkAnnouncementInProfile(ad.getName());
     }
 }

@@ -28,12 +28,12 @@ public class DeleteAnnouncementSteps {
     @Given("Пользователь авторизован и находится в личном кабинете")
     public void userIsLoggedInAndInPersonalProfile() {
         user = UserGenerator.generateUser();
-        ValidatableResponse registerResponse = apiClient.registerUser(user);
+        apiClient.registerUser(user);
 
         savedEmail = user.getEmail();
         savedPassword = user.getPassword();
 
-        mainPage.openMainPage();
+        MainPage.openMainPage();
         mainPage.clickLoginAndRegisterButton();
         User registerUser = new User();
         registerUser.setEmail(savedEmail);
@@ -49,7 +49,7 @@ public class DeleteAnnouncementSteps {
 
     @And("У пользователя есть объявление предназначенное для удаления")
     public void userHasAnnouncementToDelete() {
-        mainPage.openMainPage();
+        MainPage.openMainPage();
         mainPage.clickCreateAnnouncementButton();
 
         ad = AnnouncementGenerator.generateAd();
